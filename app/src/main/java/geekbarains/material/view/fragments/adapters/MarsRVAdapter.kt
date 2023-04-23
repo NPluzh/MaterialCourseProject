@@ -9,33 +9,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import geekbarains.material.R
 import geekbarains.material.model.mars.entity.FotosOfMars
-import kotlinx.android.synthetic.main.favorite_foto.view.*
 import kotlinx.android.synthetic.main.item_mars.view.*
 
-class MarsRVAdapter(val listener:OnItemClickListener)
-    : RecyclerView.Adapter<MarsRVAdapter.ViewHolder>() {
+class MarsRVAdapter(val listener: OnItemClickListener) :
+    RecyclerView.Adapter<MarsRVAdapter.ViewHolder>() {
 
-    companion object{
+    companion object {
         const val TAG = "33333"
     }
 
     lateinit var context: Context
 
     var data: List<FotosOfMars> = listOf()
-        set(value){
-        field = value
-        notifyDataSetChanged()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
         }
 
-    interface OnItemClickListener{
-        fun onItemClick(url:String)
+    interface OnItemClickListener {
+        fun onItemClick(url: String)
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
         val view = LayoutInflater.from(context)
-            .inflate(R.layout.item_mars, parent, false )
+            .inflate(R.layout.item_mars, parent, false)
         return ViewHolder(view)
     }
 
@@ -47,15 +46,15 @@ class MarsRVAdapter(val listener:OnItemClickListener)
         holder.bind(data[position])
     }
 
-    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(foto:FotosOfMars){
+        fun bind(foto: FotosOfMars) {
 
             var url: String? = null
-            foto.img_src ?. let{
-                 url = it.replace("http", "https")
+            foto.img_src?.let {
+                url = it.replace("http", "https")
             }
-            url?. let{
+            url?.let {
                 //грузим картинку
                 Picasso.with(context)
                     .load(it)
@@ -67,11 +66,13 @@ class MarsRVAdapter(val listener:OnItemClickListener)
             itemView.tv_mars_date.text = foto.earth_date
             itemView.tv_mars_rover.text = foto.rover?.name ?: context.getString(R.string.unknown)
 
-            Log.d(EarthRecyclerAdapter.TAG, "MarsRVAdapter bind tv_mars.text ${foto.earth_date} " +
-                    "foto.img_src = ${foto.img_src}" )
+            Log.d(
+                EarthRecyclerAdapter.TAG, "MarsRVAdapter bind tv_mars.text ${foto.earth_date} " +
+                        "foto.img_src = ${foto.img_src}"
+            )
 
             itemView.iv_mars.setOnClickListener {
-                foto.img_src?.let {listener.onItemClick(it) }
+                foto.img_src?.let { listener.onItemClick(it) }
             }
         }
     }

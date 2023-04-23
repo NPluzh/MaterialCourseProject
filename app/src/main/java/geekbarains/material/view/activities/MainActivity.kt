@@ -26,21 +26,22 @@ import java.security.NoSuchAlgorithmException
 import javax.net.ssl.SSLContext
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    companion object{
+    companion object {
         const val TAG = "33333"
     }
-    private var oldTheme:Int = 1
-    private var oldType:Int = 1
-    private var toggle:ActionBarDrawerToggle? = null
+
+    private var oldTheme: Int = 1
+    private var oldType: Int = 1
+    private var toggle: ActionBarDrawerToggle? = null
 
     lateinit var navController: NavController
-    lateinit var  appBarConfiguration: AppBarConfiguration
+    lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "MainActivity onCreate " )
+        Log.d(TAG, "MainActivity onCreate ")
 
         //без этого что- то не работает - google требует установить
         try {
@@ -61,16 +62,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //читаем сохранённный в настройках тип картинки
         oldType = PreferenceManager.getDefaultSharedPreferences(this)
-               .getString("ListEarth", "1")!!.toInt()
+            .getString("ListEarth", "1")!!.toInt()
 
         //читаем сохранённную в настройках тему
         oldTheme = PreferenceManager.getDefaultSharedPreferences(this)
             .getString("ListColor", "1")!!.toInt()
         //устанавливаем сохранённную в настройках тему
-        when(oldTheme){
-            1->setTheme(R.style.AppTheme)
-            2->setTheme(R.style.AppThemePurple)
-            3->setTheme(R.style.AppThemeBlack)
+        when (oldTheme) {
+            1 -> setTheme(R.style.AppTheme)
+            2 -> setTheme(R.style.AppThemePurple)
+            3 -> setTheme(R.style.AppThemeBlack)
         }
 
         setContentView(R.layout.activity_main)
@@ -80,14 +81,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //отключаем показ заголовка тулбара, так как там свой макет с main_title
         supportActionBar?.setDisplayShowTitleEnabled(false)
         //текстовое поле в тулбаре
-        with(toolbar.findViewById<TextView>(R.id.main_title)){
+        with(toolbar.findViewById<TextView>(R.id.main_title)) {
             textSize = 16f
             setTextColor(Color.WHITE)
             text = context.getString(R.string.app_name)
         }
 
         //находим NavController
-        navController =Navigation.findNavController(this, R.id.nav_host_fragment)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         //читаем из графа конфигурацию
         appBarConfiguration = AppBarConfiguration.Builder(navController.graph)
             //Отображать кнопку навигации как гамбургер , когда она не отображается как кнопка вверх
@@ -103,17 +104,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // в иерархии действий приложения из панели действий (экшенбара)
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
-                ||super.onSupportNavigateUp()
+                || super.onSupportNavigateUp()
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "MainActivity onResume " )
+        Log.d(TAG, "MainActivity onResume ")
         //при изменении темы и возвращении из настроек проверяем - какая тема установлена
         val newTheme = PreferenceManager.getDefaultSharedPreferences(this)
             .getString("ListColor", "1")!!.toInt()
         Log.d(TAG, "MainActivity onResume newTheme = $newTheme  oldTheme = $oldTheme ")
-        if (newTheme != oldTheme){
+        if (newTheme != oldTheme) {
             recreate()
         }
     }
@@ -123,16 +124,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_favorites -> {
                 Log.d(TAG, "MainActivity onNavigationItemSelected nav_favorites")
-          navController.navigate(R.id.favoriteFragment)
+                navController.navigate(R.id.favoriteFragment)
             }
             R.id.nav_setting -> {
                 Log.d(TAG, "MainActivity onNavigationItemSelected nav_setting")
                 navController.navigate(R.id.settingsFragment)
             }
-            R.id.nav_search_wiki ->{
+            R.id.nav_search_wiki -> {
                 navController.navigate(R.id.searchFragment)
             }
-            R.id.nav_help ->{
+            R.id.nav_help -> {
                 navController.navigate(R.id.helpFragment)
             }
 

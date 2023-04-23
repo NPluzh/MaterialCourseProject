@@ -5,22 +5,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import geekbarains.material.model.earth.api.ApiFactoryPictureOfEarth
+import geekbarains.material.model.earth.entity.PictureEarthSealed
 import geekbarains.material.model.earth.repo.IPictureEarthRepo
 import geekbarains.material.model.earth.repo.PictureEarthRepo
-import geekbarains.material.model.earth.entity.PictureEarthSealed
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
-class EarthViewModel: ViewModel() {
-    companion object{
+class EarthViewModel : ViewModel() {
+    companion object {
         const val TAG = "33333"
     }
 
     //для получения картинки Земли
-    private val pictureEarthSealed =  MutableLiveData<PictureEarthSealed>()
+    private val pictureEarthSealed = MutableLiveData<PictureEarthSealed>()
     private val pictureRepo: IPictureEarthRepo =
-        PictureEarthRepo(ApiFactoryPictureOfEarth.API )
+        PictureEarthRepo(ApiFactoryPictureOfEarth.API)
 
-    fun getPictures():LiveData<PictureEarthSealed> {
+    fun getPictures(): LiveData<PictureEarthSealed> {
         loadPictures()
         return pictureEarthSealed
     }
@@ -38,7 +38,7 @@ class EarthViewModel: ViewModel() {
                     PictureEarthSealed.Success(
                         listPicturesOfEarth = it
                     )
-            },{
+            }, {
                 pictureEarthSealed.value =
                     PictureEarthSealed.Error(
                         error = it
