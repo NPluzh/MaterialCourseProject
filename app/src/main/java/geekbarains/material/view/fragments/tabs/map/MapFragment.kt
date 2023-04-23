@@ -1,12 +1,10 @@
 package geekbarains.material.view.fragments.tabs.map
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -16,24 +14,25 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import geekbarains.material.R
-import geekbarains.material.view.constants.Constants
-import geekbarains.material.model.map.states.entity.CapitalOfState
 import geekbarains.material.model.map.coord.entity.CapitalCoords
 import geekbarains.material.model.map.coord.entity.CoordSealed
+import geekbarains.material.model.map.states.entity.CapitalOfState
 import geekbarains.material.util.snackBarLong
+import geekbarains.material.view.constants.Constants
 import geekbarains.material.view.fragments.adapters.MapRecyclerAdapter
 import geekbarains.material.viewmodel.MapViewModel
 import kotlinx.android.synthetic.main.fragment_map.*
 import java.util.*
 
-class MapFragment : Fragment(){
+class MapFragment : Fragment() {
 
-    companion object{
+    companion object {
         const val TAG = "33333"
     }
+
     lateinit var viewModelMap: MapViewModel
     private var adapter: MapRecyclerAdapter? = null
-    private var temp  = 0
+    private var temp = 0
     private var capitalOfState = listOf<CapitalOfState>()
     lateinit var navController: NavController
 
@@ -42,7 +41,7 @@ class MapFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_map_start,container, false )
+        return inflater.inflate(R.layout.fragment_map_start, container, false)
 
     }
 
@@ -55,8 +54,8 @@ class MapFragment : Fragment(){
         //так как используются вкладки, а список на второй вкладке - для его отображения
         //используем LiveData, которая сама выдаст данные, когда перейдём на вкладку со списком
         //если делать не через LiveData? а просто получать список, он не отображается
-        viewModelMap.loadData().observe(viewLifecycleOwner, Observer { list->
-            Log.d(TAG, "MapFragment onViewCreated вкладка со списком " )
+        viewModelMap.loadData().observe(viewLifecycleOwner, Observer { list ->
+            Log.d(TAG, "MapFragment onViewCreated вкладка со списком ")
             adapter?.listCapitals = list
             capitalOfState = list //сохраняем список
         })
@@ -64,19 +63,20 @@ class MapFragment : Fragment(){
         initAdapter()
 
         //слушатель на изменение текста в поле поиска
-        input_edit_text_map.addTextChangedListener { et->
+        input_edit_text_map.addTextChangedListener { et ->
             if (et.toString().isNotBlank()) {
                 val listSearched = mutableListOf<CapitalOfState>()
                 for (state in capitalOfState) {
-                    state.name?. let{ name->
-                        if((name.toUpperCase(Locale.ROOT)
-                                .startsWith(et.toString().toUpperCase(Locale.ROOT)))){
+                    state.name?.let { name ->
+                        if ((name.toUpperCase(Locale.ROOT)
+                                .startsWith(et.toString().toUpperCase(Locale.ROOT)))
+                        ) {
                             listSearched.add(state)
                         }
                     }
                 }
                 adapter?.listCapitals = listSearched
-            }else{
+            } else {
                 adapter?.listCapitals = capitalOfState
             }
         }
@@ -88,11 +88,11 @@ class MapFragment : Fragment(){
 
     override fun onPause() {
         super.onPause()
-        Log.d(TAG, "MapFragment onPause " )
+        Log.d(TAG, "MapFragment onPause ")
     }
 
-    private fun  initAdapter(){
-    rv_map.layoutManager =LinearLayoutManager(requireActivity())
+    private fun initAdapter() {
+        rv_map.layoutManager = LinearLayoutManager(requireActivity())
         adapter =
             MapRecyclerAdapter(
                 getOnClickListener()
@@ -101,19 +101,21 @@ class MapFragment : Fragment(){
     }
 
     private fun getOnClickListener(): MapRecyclerAdapter.OnitemClickListener =
-        object : MapRecyclerAdapter.OnitemClickListener{
+        object : MapRecyclerAdapter.OnitemClickListener {
             override fun onItemclick(capitalOfState: CapitalOfState) {
-                Log.d(TAG, "MapFragment getOnClickListener " +
-                        "${capitalOfState.capital} ${capitalOfState.name}")
+                Log.d(
+                    TAG, "MapFragment getOnClickListener " +
+                            "${capitalOfState.capital} ${capitalOfState.name}"
+                )
 
                 viewModelMap.getCoordSealed(capitalOfState)
-                    .observe(viewLifecycleOwner, Observer {renderData(it)})
+                    .observe(viewLifecycleOwner, Observer { renderData(it) })
             }
         }
 
     private fun renderData(data: CoordSealed) {
-        when(data){
-            is CoordSealed.Success ->{
+        when (data) {
+            is CoordSealed.Success -> {
                 renderLoadingStop()
                 renderCoords(data.capitalCoords)
             }
@@ -127,27 +129,29 @@ class MapFragment : Fragment(){
         }
     }
 
-    private fun renderCoords(capitalCoords: CapitalCoords){
+    private fun renderCoords(capitalCoords: CapitalCoords) {
         temp++
         val lat = capitalCoords.coord?.lat //широта для столицы государства
         val lon = capitalCoords.coord?.lon //долгота для столицы государства
 
-        Log.d(TAG, "MapFragment renderCoords " +
-                "Координаты для ${capitalCoords.name}  lon = $lon  lat = $lat  temp =$temp")
+        Log.d(
+            TAG, "MapFragment renderCoords " +
+                    "Координаты для ${capitalCoords.name}  lon = $lon  lat = $lat  temp =$temp"
+        )
 
-        val bundle = bundleOf(Constants.LAT to lat,  Constants.LON to lon) //так проще
+        val bundle = bundleOf(Constants.LAT to lat, Constants.LON to lon) //так проще
         navController.navigate(R.id.mapsActivity, bundle)
     }
 
-    private fun renderLoadingStart(){
-       progressBarMap.visibility = View.VISIBLE
+    private fun renderLoadingStart() {
+        progressBarMap.visibility = View.VISIBLE
     }
 
-    private fun renderLoadingStop(){
+    private fun renderLoadingStop() {
         progressBarMap.visibility = View.GONE
     }
 
     private fun renderError(error: Throwable) {
-        snackBarLong(this@MapFragment.requireView(),"Ошибка $error")
+        snackBarLong(this@MapFragment.requireView(), "Ошибка $error")
     }
 }

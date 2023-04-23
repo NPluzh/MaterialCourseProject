@@ -13,17 +13,17 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import geekbarains.material.R
-import geekbarains.material.view.constants.Constants
 import geekbarains.material.model.earth.entity.PictureEarthSealed
 import geekbarains.material.model.earth.entity.PictureOfEarth
 import geekbarains.material.util.snackBarLong
+import geekbarains.material.view.constants.Constants
 import geekbarains.material.view.fragments.adapters.EarthRecyclerAdapter
 import geekbarains.material.viewmodel.EarthViewModel
 import kotlinx.android.synthetic.main.fragment_earth.*
 
-class EarthFragment: Fragment() {
+class EarthFragment : Fragment() {
 
-    companion object{
+    companion object {
         const val TAG = "33333"
     }
 
@@ -36,7 +36,7 @@ class EarthFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_earth,container, false )
+        return inflater.inflate(R.layout.fragment_earth, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class EarthFragment: Fragment() {
 
         navController = Navigation.findNavController(view)
 
-        viewModelEarth =ViewModelProvider(requireActivity()).get(EarthViewModel::class.java)
+        viewModelEarth = ViewModelProvider(requireActivity()).get(EarthViewModel::class.java)
 
         initAdapter()
 
@@ -54,8 +54,8 @@ class EarthFragment: Fragment() {
     }
 
     private fun renderData(data: PictureEarthSealed) {
-        when(data){
-            is PictureEarthSealed.Success ->{
+        when (data) {
+            is PictureEarthSealed.Success -> {
                 renderLoadingStop()
                 renderPicture(data.listPicturesOfEarth)
             }
@@ -69,25 +69,27 @@ class EarthFragment: Fragment() {
         }
     }
 
-    private fun renderPicture(data: List<PictureOfEarth>){
+    private fun renderPicture(data: List<PictureOfEarth>) {
         adapter?.listOfPictures = data
     }
 
-    private fun renderLoadingStart(){
+    private fun renderLoadingStart() {
         progressBarEarth.visibility = View.VISIBLE
     }
 
-    private fun renderLoadingStop(){
+    private fun renderLoadingStop() {
         progressBarEarth.visibility = View.GONE
     }
 
     private fun renderError(error: Throwable) {
-        snackBarLong(this.requireView(),
+        snackBarLong(
+            this.requireView(),
             "Сегодня нет изображений со спунника \n " +
-                    "Ошибка $error")
+                    "Ошибка $error"
+        )
     }
 
-    private fun  initAdapter(){
+    private fun initAdapter() {
         rv_earth.layoutManager = LinearLayoutManager(requireActivity())
         adapter =
             EarthRecyclerAdapter(
@@ -97,12 +99,14 @@ class EarthFragment: Fragment() {
     }
 
     private fun getOnClickListener(): EarthRecyclerAdapter.OnItemClickListener =
-        object : EarthRecyclerAdapter.OnItemClickListener{
+        object : EarthRecyclerAdapter.OnItemClickListener {
             override fun onItemClick(url: String) {
                 Log.d(TAG, "### EarthFragment getOnClickListener $url")
 
-                val bundle = bundleOf(Constants.URL_ANIMATION to url,
-                    Constants.MEDIA_TYPE_ANIMATION to "image")
+                val bundle = bundleOf(
+                    Constants.URL_ANIMATION to url,
+                    Constants.MEDIA_TYPE_ANIMATION to "image"
+                )
                 navController.navigate(R.id.animationFragment, bundle)
             }
         }

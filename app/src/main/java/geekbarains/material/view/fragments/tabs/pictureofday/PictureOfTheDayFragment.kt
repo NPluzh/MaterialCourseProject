@@ -28,21 +28,22 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListener {
+class PictureOfTheDayFragment : Fragment(), DatePickerFragment.OnItemClickListener {
 
     companion object {
         const val TAG = "33333"
         private var isExpanded = false
     }
+
     var isErrorTrue = false
 
-    var favorite:Favorite? = null //экземпляр класса Favorite со всеми полями = null
-    private val dateFormat: DateFormat =SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    var favorite: Favorite? = null //экземпляр класса Favorite со всеми полями = null
+    private val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     lateinit var navController: NavController
 
-    private  val viewModel: PictureOfTheDayViewModel by lazy {
+    private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
     }
 
@@ -50,7 +51,7 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
     override fun onItemClick(date: String) {
         viewModel.saveDatePickerDate(date)
         chipGroupMain.clearCheck() //убираем выделение
-        viewModel. sendServerRequest(date)
+        viewModel.sendServerRequest(date)
     }
 
     override fun onCreateView(
@@ -67,7 +68,7 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
         navController = Navigation.findNavController(view)
 
         //разрешаем показ меню во фрагменте
-           setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
         //находим корневой лейаут и подключаем BottomSheet
         val bottomSheet: ConstraintLayout = initBottomSheet(view)
         //инициализация группы чипсов фрагмента
@@ -79,33 +80,33 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-            //если грузим видео с фазами луны в 2021 то val todayAsString = "2021-01-11"
-            //но мы грузим картинку дня и поэтому
-            val todayAsString =
-                dateFormat.format(Calendar.getInstance().apply { add(Calendar.DATE, 0) }.time )
-            Log.d(TAG, "PictureOfTheDayFragment onActivityCreated todayAsString = $todayAsString")
+        //если грузим видео с фазами луны в 2021 то val todayAsString = "2021-01-11"
+        //но мы грузим картинку дня и поэтому
+        val todayAsString =
+            dateFormat.format(Calendar.getInstance().apply { add(Calendar.DATE, 0) }.time)
+        Log.d(TAG, "PictureOfTheDayFragment onActivityCreated todayAsString = $todayAsString")
 
-            if (savedInstanceState == null){
-                Log.d(TAG, "savedInstanceState == null")
-                viewModel. sendServerRequest(todayAsString)
-                chip1.isChecked = true
-            }
+        if (savedInstanceState == null) {
+            Log.d(TAG, "savedInstanceState == null")
+            viewModel.sendServerRequest(todayAsString)
+            chip1.isChecked = true
+        }
 
-            viewModel.getData()
-                .observe(viewLifecycleOwner, Observer<PictureOfTheDaySealed> { renderData(it) })
+        viewModel.getData()
+            .observe(viewLifecycleOwner, Observer<PictureOfTheDaySealed> { renderData(it) })
 
     }
 
     private fun initFavoritListener() {
 
         btn_addToFavorite.setOnClickListener {
-            favorite?. let{
+            favorite?.let {
                 viewModel.addToFavorite(it)
             }
             toast(getString(R.string.toast_add))
         }
         btn_removeFavorite.setOnClickListener {
-            favorite?. let{
+            favorite?.let {
                 viewModel.removeFavorite(it)
             }
             toast(getString(R.string.toast_remove))
@@ -120,7 +121,7 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
         }
     }
 
-        //находим корневой лейаут и подключаем BottomSheet
+    //находим корневой лейаут и подключаем BottomSheet
     private fun initBottomSheet(view: View): ConstraintLayout {
         val bottomSheet: ConstraintLayout = view.findViewById(R.id.bottom_sheet_container)
         bottomSheet.visibility = View.VISIBLE
@@ -128,7 +129,7 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
         return bottomSheet
     }
 
-        private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
@@ -142,24 +143,36 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
                 R.id.chip1 -> {
                     val todayAsString =
                         dateFormat.format(
-                            Calendar.getInstance().apply { add(Calendar.DATE, 0) }.time )
-                    Log.d(TAG,"PictureOfTheDayFragment onActivityCreated todayAsString = $todayAsString")
+                            Calendar.getInstance().apply { add(Calendar.DATE, 0) }.time
+                        )
+                    Log.d(
+                        TAG,
+                        "PictureOfTheDayFragment onActivityCreated todayAsString = $todayAsString"
+                    )
                     image_view.clear()
                     viewModel.sendServerRequest(todayAsString)
                 }
                 R.id.chip2 -> {
                     val yesterdayAsString =
                         dateFormat.format(
-                            Calendar.getInstance().apply { add(Calendar.DATE, -1) }.time)
-                    Log.d(TAG,"PictureOfTheDayFragment onActivityCreated yesterdayAsString = $yesterdayAsString")
+                            Calendar.getInstance().apply { add(Calendar.DATE, -1) }.time
+                        )
+                    Log.d(
+                        TAG,
+                        "PictureOfTheDayFragment onActivityCreated yesterdayAsString = $yesterdayAsString"
+                    )
                     image_view.clear()
                     viewModel.sendServerRequest(yesterdayAsString)
                 }
                 R.id.chip3 -> {
                     val beforeYesterdayAsString =
                         dateFormat.format(
-                            Calendar.getInstance().apply { add(Calendar.DATE, -2) }.time)
-                    Log.d(TAG,"PictureOfTheDayFragment onActivityCreated beforeYesterdayAsString = $beforeYesterdayAsString")
+                            Calendar.getInstance().apply { add(Calendar.DATE, -2) }.time
+                        )
+                    Log.d(
+                        TAG,
+                        "PictureOfTheDayFragment onActivityCreated beforeYesterdayAsString = $beforeYesterdayAsString"
+                    )
                     image_view.clear()
                     viewModel.sendServerRequest(beforeYesterdayAsString)
                 }
@@ -167,16 +180,18 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
         }
     }
 
-    private fun renderFavorite(data: FavoriteSealed){
+    private fun renderFavorite(data: FavoriteSealed) {
         Log.d(TAG, "*** PictureOfTheDayFragment renderFavorite ")
-        when(data){
+        when (data) {
             is FavoriteSealed.Success -> {
-                Log.d(TAG, "#*#*# PictureOfTheDayFragment renderFavorite Success" +
-                        " data.isFavorite = ${data.isFavorite}")
-                if(data.isFavorite){
+                Log.d(
+                    TAG, "#*#*# PictureOfTheDayFragment renderFavorite Success" +
+                            " data.isFavorite = ${data.isFavorite}"
+                )
+                if (data.isFavorite) {
                     btn_addToFavorite.visibility = View.GONE
-                    btn_removeFavorite.visibility= View.VISIBLE
-                }else{
+                    btn_removeFavorite.visibility = View.VISIBLE
+                } else {
                     btn_addToFavorite.visibility = View.VISIBLE
                     btn_removeFavorite.visibility = View.GONE
                 }
@@ -198,10 +213,12 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
                 val mediaType = serverResponseData.mediaType
 
                 //запоминаем в поле для того чтобы использовать при записи в избранное
-                favorite = Favorite(serverResponseData.date, serverResponseData.title,
-                     serverResponseData.url, serverResponseData.mediaType)
+                favorite = Favorite(
+                    serverResponseData.date, serverResponseData.title,
+                    serverResponseData.url, serverResponseData.mediaType
+                )
 
-                favorite?. let{
+                favorite?.let {
                     viewModel.isFavoriteState(it).observe(viewLifecycleOwner, Observer {
                         renderFavorite(it)
                     })
@@ -210,18 +227,20 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
                 //прекращаем показ прогрессбара
                 progressBarNasa.visibility = View.GONE
 
-                if(data.serverResponseData.mediaType == "image"){
-                    Log.d(TAG, "*** PictureOfTheDayFragment renderData  mediaType = image " +
-                            "url = $url" )
+                if (data.serverResponseData.mediaType == "image") {
+                    Log.d(
+                        TAG, "*** PictureOfTheDayFragment renderData  mediaType = image " +
+                                "url = $url"
+                    )
                     if (url.isNullOrEmpty()) {
                         //showError("Сообщение, что ссылка пустая")
                         toast("Link is empty")
                     } else {
-                        image_view.visibility =View.VISIBLE
-                        web_view.visibility =View.GONE
+                        image_view.visibility = View.VISIBLE
+                        web_view.visibility = View.GONE
                         //грузим несуществующий файл
                         //web_view.loadUrl("file:///android_asset/nonexistent.html")
-                        web_view.loadUrl(  "about:blank") //или так
+                        web_view.loadUrl("about:blank") //или так
 
                         //Koil image download  (аналог Picasso и Glide, написанный на Kotlin)
                         image_view.load(url) {
@@ -233,20 +252,21 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
                             Log.d(TAG, "PictureOfTheDayFragment onViewCreated setOnClickListener")
                             val bundle = bundleOf(
                                 Constants.URL_ANIMATION to url,
-                                Constants.MEDIA_TYPE_ANIMATION to mediaType  ) //так проще
+                                Constants.MEDIA_TYPE_ANIMATION to mediaType
+                            ) //так проще
                             navController.navigate(R.id.animationFragment, bundle)
                         }
                     }
-                }else {
+                } else {
                     Log.d(TAG, "*** PictureOfTheDayFragment renderData  mediaType = video")
                     web_view.clearCache(true)
                     web_view.clearHistory()
                     web_view.settings.javaScriptEnabled = true  // небезопасно тащить скрипты
                     web_view.settings.javaScriptCanOpenWindowsAutomatically = true
 
-                    image_view.visibility =View.GONE
-                    web_view.visibility =View.VISIBLE
-                    url?. let{web_view.loadUrl(url)}
+                    image_view.visibility = View.GONE
+                    web_view.visibility = View.VISIBLE
+                    url?.let { web_view.loadUrl(url) }
                 }
                 //тестовый текст / в макете выставлены значения выезжания bottom sheet
                 bottom_sheet_description_header?.text = serverResponseData.title
@@ -259,10 +279,12 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
             }
             is PictureOfTheDaySealed.Error -> {
                 //если у нас уже завтра, а в NASA ещё вчера - пробуем 1 раз загрузить вчерашнюю картинку
-                if (!isErrorTrue){
+                if (!isErrorTrue) {
                     val todayAsString =
-                        dateFormat.format(Calendar.getInstance().apply { add(Calendar.DATE, -1) }.time)
-                    viewModel. sendServerRequest(todayAsString)
+                        dateFormat.format(
+                            Calendar.getInstance().apply { add(Calendar.DATE, -1) }.time
+                        )
+                    viewModel.sendServerRequest(todayAsString)
                     chip2.isChecked = true
                 }
                 isErrorTrue = true
@@ -270,7 +292,7 @@ class PictureOfTheDayFragment : Fragment() , DatePickerFragment.OnItemClickListe
                 progressBarNasa.visibility = View.GONE
                 toast(data.error.message)
                 image_view.load(R.drawable.ic_load_error_vector)
-                }
             }
         }
+    }
 }
