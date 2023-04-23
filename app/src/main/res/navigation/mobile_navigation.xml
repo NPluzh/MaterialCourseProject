@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/apiFragment">
+
+    <fragment
+        android:id="@+id/apiFragment"
+        android:name="geekbarains.material.view.fragments.tabs.tab.TabsFragment"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs" >
+        <action
+            android:id="@+id/action_apiFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_apiFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_apiFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/apiFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_apiFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_apiFragment_to_animationFragment"
+            app:destination="@id/animationFragment" />
+        <action
+            android:id="@+id/action_apiFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:popUpTo="@id/apiFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="geekbarains.material.view.fragments.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:popUpTo="@id/favoriteFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="geekbarains.material.view.fragments.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="geekbarains.material.view.activities.MapsActivity"
+        android:label="MapsActivity"
+        tools:layout="@layout/activity_maps"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="geekbarains.material.view.fragments.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="geekbarains.material.view.fragments.animation.AnimationFragment"
+        android:label="AnimationFragment"
+        tools:layout="@layout/fragment_anime">
+        <action
+            android:id="@+id/action_animationFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_animationFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="geekbarains.material.view.fragments.help.HelpFragment"
+        android:label="HelpFragment"
+        tools:layout="@layout/fragment_help">
+        <action
+            android:id="@+id/action_helpFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/helpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_helpFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment"
+            app:popUpTo="@id/helpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_helpFragment_to_apiFragment"
+            app:destination="@id/apiFragment"
+            app:popUpTo="@id/helpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

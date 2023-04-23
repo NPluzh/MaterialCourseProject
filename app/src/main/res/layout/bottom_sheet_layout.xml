@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_container"
+    style="@style/BottomSheetRootStyle"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="@dimen/behavior_peekHeight"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    tools:visibility="visible">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrolling"
+        style="@style/FrameStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            style="@style/WidgetStyle"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/bottom_sheet_line"
+                style="@style/ViewBottomSheetStyle"/>
+
+            <TextView
+                android:id="@+id/bottom_sheet_description_header"
+                style="@style/TextViewBottomSheetHeaderStyle"
+
+                tools:text="@string/bottov_shit_title"/>
+
+            <TextView
+                android:id="@+id/bottom_sheet_description"
+                style="@style/TextViewBottomSheetDescriptionStyle"
+
+                tools:text="@string/bottom_shit_text" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

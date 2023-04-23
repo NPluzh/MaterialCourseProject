@@ -1,0 +1,205 @@
+<resources>
+    <string name="app_name">Космос на ладони</string>
+    <string name="sub_">Фото и видео с сайта NASA</string>
+    <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="search_in_list">Найти в списке</string>
+    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="search_in_list_helper_text">Поищите страну в списке</string>
+    <string name="favourite">favourite</string>
+    <string name="settings">Настройки</string>
+    <string name="search">Search</string>
+    <string name="about">О приложении</string>
+    <string name="favorites">Избранное</string>
+    <string name="help">Справка</string>
+    <string name="share">Поделиться</string>
+    <string name="send">Оценить</string>
+    <string name="addition">Дополнительно</string>
+    <string name="addToFavorite">Добавить в избранное</string>
+    <string name="removeFromFavorite">Удалить из избранного</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_shit_text">This lovely starfield spans some four full moons (about 2 degrees) across the heroic northern constellation of Perseus. In telescopic exposures made during the nights of January 24, 26, and 28 it holds the famous pair of open or galactic star clusters h and Chi Persei with comet PanSTARRS (C/2017 T2) captured each night as it swept left to right across the field of view. Also cataloged as NGC 869 (right) and NGC 884, both star clusters are about 7,000 light-years away and contain stars much younger and hotter than the Sun. Separated by only a few hundred light-years, the clusters are both 13 million years young based on the ages of their individual stars, evidence that they were likely a product of the same star-forming region. Discovered in 2017 while still beyond the orbit of Saturn, Comet PanSTARRs is a new visitor to the inner solar system and just over 13 light-minutes from planet Earth. Always a rewarding sight in binoculars, the Double Cluster is even visible to the unaided eye from dark locations. C/2017 T2 could remain a telescopic comet though. One of the brightest comets anticipated in 2020 it makes its closest approach to the Sun in early May.</string>
+    <string name="bottov_shit_title">Two Clusters and a Comet</string>
+    <string name="input_any_text">Введите что-нибудь в строке поиска</string>
+
+    <string name="title_activity_settings">Настройки</string>
+
+    <string name="app_theme">Тема приложения</string>
+    <string name="choose_color_theme">Выберите цветовую тему приложения</string>
+    <string name="show_earth">Показать страну</string>
+    <string name="show_earth_from">Выберите способ показа страны из списка стран</string>
+
+    <string name="theme_cat">Тема</string>
+    <string name="theme_earth">Страны мира</string>
+    <string name="default2">Default</string>
+    <string name="entry">Entry</string>
+    <string name="choice">Choice</string>
+    <string name="action">Action</string>
+    <string name="filter">Filter</string>
+    <string name="background_color">Background Color</string>
+    <string name="ripple_color">Ripple Color</string>
+    <string name="chip_icon">Chip icon</string>
+    <string name="chip">Chip</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="choose_one">Choose One</string>
+    <string name="choice_a">Choice A</string>
+    <string name="choice_b">Choice B</string>
+    <string name="choice_c">Choice C</string>
+    <string name="group">Group</string>
+    <string name="in">in</string>
+    <string name="single">single</string>
+    <string name="line">line</string>
+    <string name="add">add</string>
+    <string name="a">a</string>
+    <string name="horizontal">horizontal</string>
+    <string name="scroll">scroll</string>
+    <string name="close_icon_listener">Close Icon Listener</string>
+    <string name="raised_button">Raised Button</string>
+    <string name="unelevated_button">Unelevated Button</string>
+    <string name="outlined_button">Outlined Button</string>
+    <string name="text_button">Text Button</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="radio_button">Radio Button</string>
+    <string name="switch2">Switch</string>
+    <string name="filled_box_text_field">Filled Box Text Field</string>
+    <string name="outlined_box_text_field">Outlined Box Text Field</string>
+    <string name="text">Text</string>
+    <string name="tab_1">Tab 1</string>
+    <string name="tab_2">Tab 2</string>
+    <string name="tab_3">Tab 3</string>
+    <string name="card">Card</string>
+    <string name="video">Видео с фазами луны</string>
+    <string name="today">Сегодня</string>
+    <string name="yesterday">Вчера</string>
+    <string name="before_yesterday">Позавчера</string>
+    <string name="else_foto">Ещё фото</string>
+    <string name="show_descr">Описание</string>
+    <string name="two_days_ago">2 дня назад</string>
+    <string name="three_days_ago">3 дня назад</string>
+    <string name="four_days_ago">4 дня назад</string>
+    <string name="five_days_ago">5 дней назад</string>
+    <string name="fab">fab</string>
+    <string name="The_universe_in_the_palm">Вселенная на ладони</string>
+    <string name="home">В начало</string>
+    <string name="descr">Описание</string>
+    <string name="searching">Поиск</string>
+    <string name="elsee">Фото</string>
+    <string name="state">Страна</string>
+    <string name="capital">Столица</string>
+    <string name="last_search">Последнее</string>
+    <string name="google_maps_key">AIzaSyBU-yFz18nPaBwqBDedSGvUkfBgDYEQ0zc</string>
+    <!-- Google Maps menu -->
+    <string name="menu_map_mode">Тип карты</string>
+    <string name="menu_map_mode_normal">По умолчанию</string>
+    <string name="menu_map_mode_satellite">Спутник</string>
+    <string name="menu_map_mode_terrain">Рельеф</string>
+    <string name="menu_map_traffic">Пробки на дорогах</string>
+    <string name="menu_map_location">Я здесь</string>
+    <string name="menu_map_point_new">Начальная точка</string>
+    <string name="wiki_search">Поиск в Википедии</string>
+    <string name="choose_from_list">Выберите страну из списка</string>
+    <string name="world_map">На карте мира</string>
+    <string name="foto_sat">Со спутника</string>
+    <string name="merc">Меркурий</string>
+    <string name="venus">Венера</string>
+    <string name="earth_str">Земля</string>
+    <string name="mars_str">Марс</string>
+    <string name="jupiter">Юпитер</string>
+    <string name="saturn">Сатурн</string>
+    <string name="uran">Уран</string>
+    <string name="neptun">Нептун</string>
+    <string name="pluto">Плутон</string>
+    <string name="univers">Вселенная</string>
+    <string name="tuman">Туманность</string>
+    <string name="galo">Галактика</string>
+    <string name="star_str">Звезда</string>
+    <string name="planet">Планета</string>
+    <string name="comet">Комета</string>
+    <string name="aster">Астероид</string>
+    <string name="b_h">Чёрная дыра</string>
+    <string name="b_mat">Тёмная материя</string>
+    <string name="b_energy">Тёмная энергия</string>
+    <string name="castel">Созвездие</string>
+    <string name="milky">Млечный путь</string>
+    <string name="sun">Солнце</string>
+    <string name="tv_str">TextView</string>
+    <string name="foto_mars">Это фото марса. Марс — четвёртая по удалённости от Солнца и седьмая по размерам планета Солнечной системы. Названа в честь Марса — древнеримского бога войны, соответствующего древнегреческому Аресу. Иногда Марс называют «красной планетой» из-за красноватого оттенка поверхности, придаваемого ей минералом маггемитом (оксидом железа).</string>
+    <string name="video_mars">Это видео марса. Марс — четвёртая по удалённости от Солнца и седьмая по размерам планета Солнечной системы. Названа в честь Марса — древнеримского бога войны, соответствующего древнегреческому Аресу. Иногда Марс называют «красной планетой» из-за красноватого оттенка поверхности, придаваемого ей минералом маггемитом (оксидом железа).</string>
+    <string name="edit_case">Режим редактирования</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="first_foto_apod">16–06–1995</string>
+    <string name="no_data_favorite">"Нет данных. Добавьте фото или видео в избранное "</string>
+    <string name="headerFavorite">Избранное</string>
+    <string name="edit">Редактирование</string>
+    <string name="description">Описание</string>
+    <string name="shot_descr">Краткое описание</string>
+    <string name="do_descr">Опишите картинку или вмдео</string>
+    <string name="head">Заголовок</string>
+    <string name="datee">Дата</string>
+    <string name="stub">Заглушка</string>
+    <string name="Help">"Справка "</string>
+    <string name="noHelp">Справка недоступна</string>
+
+    <string name="helpString">Краткое описание приложения.\nПрограмма предназначена для получения данных с сайта NASA\nНа вкладке ФОТО ДНЯ можно посмотреть на фото с сайта NASA APOD,\nгде каждый день появляется новое фотография или видео с простров вселенной,\nа также краткое объяснение, написанное профессиональным астрономом.\nКроме того, можно получить фото дня для любой доступной дате, воспользовавшись календарём ,\nкоторый вызывается по кнопке Ещё фото\nНА вкладке ЗЕМЛЯ находятся  ежедневные изображения диска Земли,\nсобранных прибором  Earth Polychromatic Imaging Camera (EPIC)\nНа вкладке КАРТА МИРА можно посмотреть местоположение любой страны мира на карте Google, выбрав её из списка\nФункция поиска в Википедии позволяет найти интересующий вас термин по ключевым словам\nПонравившиеся изображения и видео  можно сохранить в списке Избранное\n</string>
+
+    <string name="helpString1">Краткое описание приложения.</string>
+
+    <string name="helpString222">Краткое описание приложения.\n\n
+Программа предназначена для получения данных с сайта NASA\n\n
+На вкладке ФОТО ДНЯ можно посмотреть на фото с сайта NASA APOD,
+где каждый день появляется новое фотография или видео с простров вселенной,
+а также краткое объяснение, написанное профессиональным астрономом.\n
+Кроме того, можно получить фото дня для любой доступной даты, воспользовавшись календарём, который вызывается по кнопке По дате\n\n
+На вкладке ЗЕМЛЯ находятся  ежедневные изображения диска Земли,
+собранных прибором Earth Polychromatic Imaging Camera (EPIC)\n\n
+На вкладке МАРС находятся изображения, полученные с марсоходов Curiosity, Opportunity и Spirit.\n\n
+На вкладке КАРТА МИРА можно посмотреть местоположение любой страны мира на карте Google, выбрав её из списка\n\n
+Функция поиска в Википедии позволяет найти интересующий вас термин по ключевым словам\n\n
+В списке Избранное можно сохранить понравившиеся изображения и видео.
+</string>
+    <string name="header">Заголовок</string>
+    <string name="dateFoto">Дата</string>
+    <string name="by_date">По дате</string>
+    <string name="after_1995">Нужно не раньше 16 июня 1995 года</string>
+    <string name="before_today">\"Нужно не позднее сегодняшнего дня \"</string>
+    <string name="toast_add">Добавлено в избранное</string>
+    <string name="toast_remove">Удалено из избранного</string>
+    <string name="zoom_zoom">Сильное увеличение</string>
+    <string name="curiosity">Curiosity</string>
+    <string name="opportunity">Opportunity</string>
+    <string name="spirit">Spirit</string>
+    <string name="choose_date">Выбрать дату в календаре</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="splash">Экран загрузки</string>
+    <string name="show_hide">Показать/скрыть.</string>
+    <string name="show_screen">Показываем экран загрузки</string>
+    <string name="hide_screen">Не показываем экран загрузки</string>
+
+    <string-array name="pref_entry_color">
+        <item>Стандартная</item>
+        <item>Фиолетовая</item>
+        <item>Чёрная</item>
+    </string-array>
+
+    <string-array name="pref_entryValues_color">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="pref_entry_earth">
+        <item>На карте мира</item>
+        <item>Со спутника</item>
+    </string-array>
+
+    <string-array name="pref_entryValues_earth">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+</resources>

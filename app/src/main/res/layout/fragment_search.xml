@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_8dp"
+        android:hint="@string/search_wiki"
+        app:boxCornerRadiusBottomEnd="@dimen/boxCornerRadiusBottomEnd"
+        app:boxCornerRadiusTopStart="@dimen/boxCornerRadiusTopStart"
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        app:endIconCheckable="true"
+        app:endIconDrawable="@drawable/ic_wikipedia"
+        app:endIconMode="custom"
+        app:helperText="@string/wiki_helper_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/chipGroupSearch">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_text_search"
+            style="@style/TextInputEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupSearch"
+        style="@style/ChipGroupStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_search"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/merc" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/venus" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip3"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/earth_str" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mars_str" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip5"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jupiter" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip6"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saturn" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip7"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uran" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip8"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/neptun" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip81"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pluto" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip9"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/univers" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip10"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tuman" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip11"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/galo" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip12"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/star_str" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip13"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/planet" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip14"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comet" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip15"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aster" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip16"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/b_h" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip17"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/b_mat" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip18"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/b_energy" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip19"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/castel" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip20"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/milky" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip21"
+            style="@style/ChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sun" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

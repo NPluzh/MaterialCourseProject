@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardStyle">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/card_padding"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_capital"
+        style="@style/MyListItemStyle"
+        tools:text="@string/capital"/>
+
+        <TextView
+            android:id="@+id/tv_state"
+            style="@style/MyListItemStyle"
+            android:textSize="14sp"
+            tools:text="@string/state"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView >

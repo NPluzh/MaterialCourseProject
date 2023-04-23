@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FrameStyle">
+
+    <ProgressBar
+        android:id="@+id/progressBarNasa"
+        style="@style/ProgressBarStyle"/>
+
+    <androidx.core.widget.NestedScrollView
+        style="@style/FrameStyle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            style="@style/FrameStyle"
+            android:paddingStart="@dimen/cl_paddingStart"
+            android:paddingEnd="@dimen/cl_paddingEnd">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupMain"
+                style="@style/ChipGroupStyle"
+                android:layout_marginTop="@dimen/layout_margin_16dp"
+                android:layout_marginBottom="@dimen/layout_margin_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    style="@style/ChipStyle"
+                    android:fontFamily="@font/andika"
+                    android:text="@string/today" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    style="@style/ChipStyle"
+                    android:text="@string/yesterday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    style="@style/ChipStyleAction"
+                    android:text="@string/by_date" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <Button
+                android:id="@+id/btn_addToFavorite"
+                style="?favorite"
+                android:text="@string/addToFavorite"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/chipGroupMain"
+                app:layout_constraintStart_toStartOf="@+id/chipGroupMain"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroupMain"
+                tools:visibility="visible"/>
+            <Button
+                android:id="@+id/btn_removeFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?attr/borderlessButtonStyle"
+                android:textColor="?colorPrimary"
+                android:textSize="12sp"
+                android:text="@string/removeFromFavorite"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/chipGroupMain"
+                app:layout_constraintStart_toStartOf="@+id/chipGroupMain"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroupMain"
+               tools:visibility="visible"/>
+
+            <View
+                android:id="@+id/viewMain"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="50dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroupMain" />
+
+            <geekbarains.material.util.EquilateralImageView
+                android:id="@+id/image_view"
+                style="@style/EquilateralImageViewStyle"
+                android:layout_marginTop="@dimen/layout_margin_16dp"
+                android:contentDescription="@string/photo_of_the_day_stub"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewMain"
+                app:srcCompat="@drawable/ic_no_photo_vector" />
+
+            <WebView
+                android:id="@+id/web_view"
+                style="@style/WebViewStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewMain"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+<!--    BottomSheet  -->
+    <include layout="@layout/bottom_sheet_layout" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/app_bar_edit"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/edit"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/app_bar_favorites"
+        android:icon="@drawable/ic_favorite_border_white_24"
+        android:title="@string/favorites"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/app_bar_search_wiki"
+        android:icon="@drawable/ic_wikipedia_white"
+        android:title="@string/wiki_search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_zoom"
+        android:icon="@drawable/ic_baseline_zoom_out_map_24"
+        android:title="@string/zoom_zoom"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_settings"
+        android:icon="@drawable/ic_settings_menu"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/app_bar_help"
+        android:icon="@drawable/ic_baseline_help_outline_24"
+        android:title="@string/help"
+        app:showAsAction="never" />
+</menu>

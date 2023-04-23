@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <WebView
+        android:id="@+id/web_view_video_anim"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="@dimen/layout_margin_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/videoScreen"
+        app:layout_constraintBottom_toBottomOf="@id/videoScreen"
+        tools:ignore="WebViewLayout"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/videoScreen"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/layout_margin_8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fotoTitleVideo"
+        style="@style/MyTextStyleFavorite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/head"
+        android:textSize="16sp"
+        android:maxLines="2"
+        android:layout_marginStart="@dimen/layout_margin_8dp"
+        app:layout_constraintEnd_toEndOf="@+id/barrierVideoEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/videoScreen"
+        app:layout_constraintTop_toTopOf="@+id/videoScreen" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fotoDateVideo"
+        style="@style/MyTextStyleFavorite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/datee"
+        android:textSize="14sp"
+        android:layout_marginBottom="@dimen/layout_margin_8dp"
+        android:layout_marginStart="@dimen/layout_margin_8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/videoScreen"
+        app:layout_constraintEnd_toStartOf="@+id/barrierVideoEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/videoScreen" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierVideoEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="moveItemDownVideoEdit" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/moveItemDownVideoEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="?colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/moveItemUpVideoEdit"
+        app:layout_constraintEnd_toStartOf="@+id/moveItemUpVideoEdit"
+        app:layout_constraintStart_toEndOf="@+id/barrierVideoEdit"
+        app:layout_constraintTop_toTopOf="@+id/moveItemUpVideoEdit"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/moveItemUpVideoEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_8dp"
+        android:tint="?colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/removeItemImageViewVideoEdit"
+        app:layout_constraintEnd_toStartOf="@+id/addDescrVideoEdit"
+        app:layout_constraintTop_toTopOf="@+id/addDescrVideoEdit"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_24" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addDescrVideoEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:tint="?colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/showTextVideo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/removeItemImageViewVideoEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:tint="?colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/showTextVideo"
+        app:layout_constraintTop_toBottomOf="@id/addDescrVideoEdit"
+        app:srcCompat="@drawable/ic_baseline_delete_outline_24"  />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/profileVideoEdit"
+        android:visibility="gone"
+        app:constraint_referenced_ids=
+            "moveItemUpVideoEdit,moveItemDownVideoEdit,
+             addDescrVideoEdit, removeItemImageViewVideoEdit"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        tools:visibility="visible"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/showTextVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:tint="?colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/web_view_video_anim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/web_view_video_anim"
+        app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fotoDescriptionVideo"
+        style="@style/MyTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/layout_margin_8dp"
+        android:text="@string/video_mars"
+        android:textColor="#000"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoScreen"
+        tools:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000"
+        app:layout_constraintTop_toBottomOf="@+id/fotoDescriptionVideo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
