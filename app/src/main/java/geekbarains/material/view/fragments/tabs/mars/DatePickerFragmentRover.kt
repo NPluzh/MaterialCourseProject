@@ -13,13 +13,18 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DatePickerFragmentRover (private val listener: OnItemClickListenerRover,
-                               val date:String, private val roverType:Int)
-    : DialogFragment(),  DatePickerDialog.OnDateSetListener {
+class DatePickerFragmentRover(
+    private val listener: OnItemClickListenerRover,
+    val date: String, private val roverType: Int
+) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
-    companion object{const val TAG = "33333"}
+    companion object {
+        const val TAG = "33333"
+    }
 
-    interface OnItemClickListenerRover{fun onItemClick(date:String, typeRover:Int) }
+    interface OnItemClickListenerRover {
+        fun onItemClick(date: String, typeRover: Int)
+    }
 
     //открываем DatePicker с текущей датой
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -31,21 +36,21 @@ class DatePickerFragmentRover (private val listener: OnItemClickListenerRover,
         val dd = date.takeLast(2).toInt()
 
         //обязательно в конструктор передавать слушатель, иначе onDateSet не сработает
-        val datePicker = DatePickerDialog(requireContext(), this, yy, /*индекс с 0*/mm-1, dd )
-        when(roverType){
-            CURIOSITY ->{
+        val datePicker = DatePickerDialog(requireContext(), this, yy, /*индекс с 0*/mm - 1, dd)
+        when (roverType) {
+            CURIOSITY -> {
                 datePicker.datePicker.maxDate =
                     GregorianCalendar(2019, /*индекс с 0*/6, 10).timeInMillis
                 datePicker.datePicker.minDate =
                     GregorianCalendar(2012, /*индекс с 0*/7, 6).timeInMillis
             }
-            OPPORTUNITY->{
+            OPPORTUNITY -> {
                 datePicker.datePicker.maxDate =
                     GregorianCalendar(2017, /*индекс с 0*/1, 20).timeInMillis
                 datePicker.datePicker.minDate =
                     GregorianCalendar(2004, /*индекс с 0*/0, 26).timeInMillis
             }
-            SPIRIT->{
+            SPIRIT -> {
                 datePicker.datePicker.maxDate =
                     GregorianCalendar(2010, /*индекс с 0*/1, 5).timeInMillis
                 datePicker.datePicker.minDate =
@@ -54,10 +59,11 @@ class DatePickerFragmentRover (private val listener: OnItemClickListenerRover,
         }
         return datePicker
     }
+
     //выбираем дату и после нажатия ok попадаем в этот метод
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val date:String = dateFormat.format(GregorianCalendar(year, month, dayOfMonth).time)
+        val date: String = dateFormat.format(GregorianCalendar(year, month, dayOfMonth).time)
 
         listener.onItemClick(date, roverType)
         Log.d(TAG, "DatePickerFragmentRover onDateSet  $date")

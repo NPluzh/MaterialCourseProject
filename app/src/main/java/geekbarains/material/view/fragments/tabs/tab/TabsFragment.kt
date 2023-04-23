@@ -1,6 +1,5 @@
 package geekbarains.material.view.fragments.tabs.tab
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -9,12 +8,11 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import geekbarains.material.R
 import geekbarains.material.view.constants.Constants
-import geekbarains.material.view.fragments.tabs.pictureofday.PictureOfTheDayFragment
 import kotlinx.android.synthetic.main.fragment_tabs.*
 
-class TabsFragment:Fragment() {
+class TabsFragment : Fragment() {
 
-    companion object{
+    companion object {
         const val TAG = "33333"
     }
 
@@ -25,7 +23,7 @@ class TabsFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_tabs,container, false )
+        return inflater.inflate(R.layout.fragment_tabs, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,9 +43,9 @@ class TabsFragment:Fragment() {
         //устанавливаем текущую вкладку - если в аргументах  ничего нет - фото дня
         val tabPosition = arguments?.getInt(Constants.PAGER_POSITION, 0)
         Log.d(TAG, "**-** TabsFragment onViewCreated  tabPosition = $tabPosition")
-        tabPosition?. let{
+        tabPosition?.let {
             view_pager.currentItem = it
-        }?: let{view_pager.currentItem = 0}
+        } ?: let { view_pager.currentItem = 0 }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
